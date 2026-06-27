@@ -1,0 +1,17 @@
+{
+    "singleQuote": true,
+    "semi": true,
+    "trailingComma": "all",
+    "bracketSameLine": true,
+    "tabWidth": 4,
+    "plugins": ["prettier-plugin-svelte", "prettier-plugin-tailwindcss"],
+    "tailwindStylesheet": "./src/lib/app.css",
+    "overrides": [
+        {
+            "files": "*.svelte",
+            "options": {
+                "parser": "svelte"
+            }
+        }
+    ]
+}
