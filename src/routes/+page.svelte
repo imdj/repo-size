@@ -220,7 +220,7 @@
             <tr class="border-b border-gray-200">
                 <th>Platform</th>
                 <th>Supported</th>
-                <th>Auth required</th>
+                <th>Accessible without auth</th>
                 <th>Size unit</th>
             </tr>
             </thead>
@@ -228,25 +228,25 @@
             <tr>
                 <td class="platform-name">GitHub</td>
                 <td><span class="inline-flex items-center gap-1.5 text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded text-xs font-medium">Supported</span></td>
-                <td class="text-gray-600">No</td>
+                <td class="text-gray-600">Public repos</td>
                 <td class="text-gray-600">Kilobytes (&times;1024 for bytes)</td>
             </tr>
             <tr>
                 <td class="platform-name">Bitbucket Cloud</td>
                 <td><span class="inline-flex items-center gap-1.5 text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded text-xs font-medium">Supported</span></td>
-                <td class="text-gray-600">No — public repos only</td>
+                <td class="text-gray-600">Public repos</td>
                 <td class="text-gray-600">Bytes</td>
             </tr>
             <tr>
                 <td class="platform-name">Gitea</td>
                 <td><span class="inline-flex items-center gap-1.5 text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded text-xs font-medium">Supported</span></td>
-                <td class="text-gray-600">No — public repos only</td>
+                <td class="text-gray-600">Public repos</td>
                 <td class="text-gray-600">Bytes</td>
             </tr>
             <tr class="bg-amber-50/50">
                 <td class="platform-name">GitLab</td>
                 <td><span class="inline-flex items-center gap-1.5 text-amber-700 bg-amber-100 px-2 py-0.5 rounded text-xs font-medium">Not supported</span></td>
-                <td class="text-amber-800 font-medium">Yes — always</td>
+                <td class="text-amber-800 font-medium">No</td>
                 <td class="text-gray-600">Bytes</td>
             </tr>
             <tr>
@@ -264,7 +264,7 @@
             </tbody>
         </table>
         <p class="mt-3 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded px-3 py-2">
-            <strong>GitLab requires authentication</strong> even for public repositories — the statistics field is gated regardless of project visibility. Use a personal access token with <code class="font-mono">read_api</code> scope as a workaround.
+            <strong>GitLab requires authentication</strong> to access the statistics field regardless of project visibility. You need a personal access token with <code class="font-mono">read_api</code> scope. See <a href="https://docs.gitlab.com/api/project_statistics/" target="_blank" rel="noopener noreferrer" class="underline hover:text-amber-800">Project statistics API</a> in GitLab's documentation for more information.
         </p>
     </section>
 </main>
