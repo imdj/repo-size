@@ -76,3 +76,14 @@
 <div class="flex-1">
     {@render children()}
 </div>
+<footer class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+    <a
+        href="https://github.com/imdj/repo-size"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-gray-600 bg-gray-900 text-sm font-medium text-gray-300 hover:border-gray-950 hover:text-white hover:bg-black transition-colors dark:text-gray-800 dark:bg-white dark:hover:text-gray-950 dark:hover:border-gray-600 dark:hover:bg-gray-300"
+        >
+    <Icon icon="lucide:github" width="20" height="20" />
+    View source on GitHub
+    </a>
+</footer>
