@@ -227,43 +227,43 @@
             <tbody class="divide-y divide-gray-100">
             <tr>
                 <td class="platform-name">GitHub</td>
-                <td><span class="inline-flex items-center gap-1.5 text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded text-xs font-medium">Supported</span></td>
-                <td class="text-gray-600">Public repos</td>
-                <td class="text-gray-600">Kilobytes (&times;1024 for bytes)</td>
+                <td><span class="support-status available">Supported</span></td>
+                <td>Public repos</td>
+                <td>Kilobytes (&times;1024 for bytes)</td>
             </tr>
             <tr>
                 <td class="platform-name">Bitbucket Cloud</td>
-                <td><span class="inline-flex items-center gap-1.5 text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded text-xs font-medium">Supported</span></td>
-                <td class="text-gray-600">Public repos</td>
-                <td class="text-gray-600">Bytes</td>
+                <td><span class="support-status available">Supported</span></td>
+                <td>Public repos</td>
+                <td>Bytes</td>
             </tr>
             <tr>
                 <td class="platform-name">Gitea</td>
-                <td><span class="inline-flex items-center gap-1.5 text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded text-xs font-medium">Supported</span></td>
-                <td class="text-gray-600">Public repos</td>
-                <td class="text-gray-600">Bytes</td>
+                <td><span class="support-status available">Supported</span></td>
+                <td>Public repos</td>
+                <td>Bytes</td>
             </tr>
-            <tr class="bg-amber-50/50">
+            <tr class="bg-amber-100 dark:bg-amber-200/40">
                 <td class="platform-name">GitLab</td>
-                <td><span class="inline-flex items-center gap-1.5 text-amber-700 bg-amber-100 px-2 py-0.5 rounded text-xs font-medium">Not supported</span></td>
+                <td><span class="support-status not-supported">Not supported</span></td>
                 <td class="text-amber-800 font-medium">No</td>
-                <td class="text-gray-600">Bytes</td>
+                <td>Bytes</td>
             </tr>
             <tr>
                 <td class="platform-name">Bitbucket Data Center</td>
-                <td><span class="inline-flex items-center gap-1.5 text-gray-500 bg-gray-100 px-2 py-0.5 rounded text-xs font-medium">Not available</span></td>
+                <td><span class="support-status not-available">Not available</span></td>
                 <td class="text-gray-400">N/A</td>
                 <td class="text-gray-400">Not exposed via API</td>
             </tr>
             <tr>
                 <td class="platform-name">sourcehut</td>
-                <td><span class="inline-flex items-center gap-1.5 text-gray-500 bg-gray-100 px-2 py-0.5 rounded text-xs font-medium">Not available</span></td>
+                <td><span class="support-status not-available">Not available</span></td>
                 <td class="text-gray-400">N/A</td>
                 <td class="text-gray-400">Not exposed via API</td>
             </tr>
             </tbody>
         </table>
-        <p class="mt-3 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded px-3 py-2">
+        <p class="mt-3 text-xs text-amber-700 bg-amber-100 border border-amber-200 rounded px-3 py-2">
             <strong>GitLab requires authentication</strong> to access the statistics field regardless of project visibility. You need a personal access token with <code class="font-mono">read_api</code> scope. See <a href="https://docs.gitlab.com/api/project_statistics/" target="_blank" rel="noopener noreferrer" class="underline hover:text-amber-800">Project statistics API</a> in GitLab's documentation for more information.
         </p>
     </section>
@@ -284,14 +284,30 @@
     }
 
     th {
-        @apply text-left font-medium text-gray-500 py-3 pr-4 whitespace-nowrap;
+        @apply text-left font-medium text-gray-500 dark:text-gray-400 py-3 pr-4 whitespace-nowrap;
     }
 
     td {
-        @apply py-3 pr-4;
+        @apply py-3 pr-4 text-gray-600 dark:text-gray-300;
     }
 
     .platform-name {
-        @apply font-medium text-gray-900 ;
+        @apply font-medium text-gray-900 dark:text-white;
+    }
+
+    .support-status {
+        @apply inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-xs font-medium;
+    }
+
+    .support-status.available {
+        @apply text-emerald-700 bg-emerald-200;
+    }
+
+    .support-status.not-supported {
+        @apply text-amber-700 bg-amber-200;
+    }
+
+    .support-status.not-available {
+        @apply text-gray-500 bg-gray-100 dark:text-gray-800 dark:bg-gray-300;
     }
 </style>
