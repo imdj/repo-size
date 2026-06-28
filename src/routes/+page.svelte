@@ -30,10 +30,10 @@
 </script>
 
 <svelte:head>
-    <title>Repo Size — Find the size of any Git repository</title>
+    <title>Repo Size - Find the size of any Git repository</title>
     <meta
         name="description"
-        content="Free tool to find the size of any GitHub, GitLab, Bitbucket, or Gitea repository without cloning it." />
+        content="Free tool to check the size of any public git repo on GitHub, Bitbucket, or Gitea without the need to clone it." />
 </svelte:head>
 
 <main
