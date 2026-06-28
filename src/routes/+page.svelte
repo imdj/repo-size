@@ -41,12 +41,12 @@
     <div class="max-w-2xl w-full text-center space-y-8">
         <div class="space-y-3">
             <h1
-                class="text-4xl sm:text-5xl font-extrabold tracking-tight text-indigo-500">
-                Repo Size
+                class="tracking-tight text-indigo-500">
+                Check the size of<br>public Git repositories
             </h1>
+            <h2>Without having to clone it or using the command line</h2>
             <p
                 class="text-lg text-gray-500 dark:text-gray-400 max-w-lg mx-auto">
-                Find the size of any Git repository without cloning it.
                 <span
                     class="block text-sm text-gray-400 dark:text-gray-500 mt-1"
                     >Supports GitHub, Bitbucket, and Gitea</span>
@@ -195,9 +195,83 @@
             {/each}
         </div>
     </div>
+    <section class="max-w-3xl w-full space-y-4 mt-16">
+        <h2 class="text-center">How It Works</h2>
+        <p>
+            Enter a repository URL in the format you'd normally use to visit the repo — something like <code>https://github.com/owner/repo</code> — and the tool queries that platform's public API on your behalf. The size is returned directly from the host's own data, not estimated or scraped.
+        </p>
+        <p>
+            No authentication is required for GitHub, Bitbucket, and Gitea public repositories. GitLab is a known exception — more on that below.
+        </p>
+    </section>
+    <section class="max-w-3xl w-full space-y-4 mt-16">
+        <h2 class="text-center">What the Size Number Actually Means</h2>
+        <p>
+            When you clone a repository, your machine holds two things: the working tree (the actual files checked out at a given commit) and the Git history (all previous commits, branches, and objects compressed into the .git folder). What this tool reports is the latter — the server-side storage of that history — which is what Git hosts use to calculate your repository size and is often reported in the API responses.
+        </p>
+        <p>
+            The two numbers can differ by an order of magnitude on projects with long histories or large binary assets.
+        </p>
+    </section>
+    <section class="max-w-3xl w-full overflow-x-auto space-y-4 mt-16">
+        <h2 class="text-center">Platform Support</h2>
+        <table class="w-full text-sm border-collapse">
+            <thead>
+            <tr class="border-b border-gray-200">
+                <th>Platform</th>
+                <th>Supported</th>
+                <th>Auth required</th>
+                <th>Size unit</th>
+            </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+            <tr>
+                <td class="platform-name">GitHub</td>
+                <td><span class="inline-flex items-center gap-1.5 text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded text-xs font-medium">Supported</span></td>
+                <td class="text-gray-600">No</td>
+                <td class="text-gray-600">Kilobytes (&times;1024 for bytes)</td>
+            </tr>
+            <tr>
+                <td class="platform-name">Bitbucket Cloud</td>
+                <td><span class="inline-flex items-center gap-1.5 text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded text-xs font-medium">Supported</span></td>
+                <td class="text-gray-600">No — public repos only</td>
+                <td class="text-gray-600">Bytes</td>
+            </tr>
+            <tr>
+                <td class="platform-name">Gitea</td>
+                <td><span class="inline-flex items-center gap-1.5 text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded text-xs font-medium">Supported</span></td>
+                <td class="text-gray-600">No — public repos only</td>
+                <td class="text-gray-600">Bytes</td>
+            </tr>
+            <tr class="bg-amber-50/50">
+                <td class="platform-name">GitLab</td>
+                <td><span class="inline-flex items-center gap-1.5 text-amber-700 bg-amber-100 px-2 py-0.5 rounded text-xs font-medium">Not supported</span></td>
+                <td class="text-amber-800 font-medium">Yes — always</td>
+                <td class="text-gray-600">Bytes</td>
+            </tr>
+            <tr>
+                <td class="platform-name">Bitbucket Data Center</td>
+                <td><span class="inline-flex items-center gap-1.5 text-gray-500 bg-gray-100 px-2 py-0.5 rounded text-xs font-medium">Not available</span></td>
+                <td class="text-gray-400">N/A</td>
+                <td class="text-gray-400">Not exposed via API</td>
+            </tr>
+            <tr>
+                <td class="platform-name">sourcehut</td>
+                <td><span class="inline-flex items-center gap-1.5 text-gray-500 bg-gray-100 px-2 py-0.5 rounded text-xs font-medium">Not available</span></td>
+                <td class="text-gray-400">N/A</td>
+                <td class="text-gray-400">Not exposed via API</td>
+            </tr>
+            </tbody>
+        </table>
+        <p class="mt-3 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded px-3 py-2">
+            <strong>GitLab requires authentication</strong> even for public repositories — the statistics field is gated regardless of project visibility. Use a personal access token with <code class="font-mono">read_api</code> scope as a workaround.
+        </p>
+    </section>
 </main>
 
 <style>
+    @reference "$lib/app.css"; 
+
     @keyframes fadeSlideIn {
         from {
             opacity: 0;
@@ -207,5 +281,17 @@
             opacity: 1;
             transform: translateY(0);
         }
+    }
+
+    th {
+        @apply text-left font-medium text-gray-500 py-3 pr-4 whitespace-nowrap;
+    }
+
+    td {
+        @apply py-3 pr-4;
+    }
+
+    .platform-name {
+        @apply font-medium text-gray-900 ;
     }
 </style>
